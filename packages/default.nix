@@ -71,7 +71,10 @@ let
     ) releases
   );
 
-  byVersion = lib.listToAttrs (
+  # The overlay's public package family follows go-overlay's selector shape:
+  # `pkgs.surge.versions."6.9.0"`.  Keep normalized names only as a flake
+  # output adapter, where shell-friendly attribute names are useful.
+  versions = lib.listToAttrs (
     map (
       release:
       lib.nameValuePair release.version
@@ -80,6 +83,6 @@ let
   );
 in
 {
-  inherit byAttribute byVersion releases;
-  latest = byAttribute.surge_6_9_0;
+  inherit byAttribute releases versions;
+  latest = versions."6.9.0";
 }

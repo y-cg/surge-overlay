@@ -15,7 +15,7 @@ valid Surge license to use; the package is therefore marked unfree.
       modules = [
         ({ pkgs, ... }: {
           nixpkgs.overlays = [ surge-overlay.overlays.default ];
-          environment.systemPackages = [ pkgs.surge ];
+          environment.systemPackages = [ pkgs.surge.latest ];
         })
       ];
     };
@@ -23,10 +23,11 @@ valid Surge license to use; the package is therefore marked unfree.
 }
 ```
 
-`pkgs.surge` and `nix run .` select the newest pinned release, currently
-6.9.0.  Every retained release is also available by normalized attribute name,
-such as `pkgs.surge_6_4_4`, or by its exact version in
-`pkgs.surge6."6.4.4"`.
+`pkgs.surge.latest` and `nix run .` select the newest pinned release,
+currently 6.9.0.  Select a specific archived release by its literal upstream
+version, for example `pkgs.surge.versions."6.4.4"`.  The flake's direct
+package outputs retain normalized names such as `surge_6_4_4` for command-line
+convenience; they are not exported by the overlay.
 
 ## Build directly
 

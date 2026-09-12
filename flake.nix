@@ -23,7 +23,7 @@
         {
           packages = surgeVersions.byAttribute // {
             default = surgeVersions.latest;
-            surge = surgeVersions.latest;
+            latest = surgeVersions.latest;
           };
         };
 
@@ -32,13 +32,12 @@
         let
           surgeVersions = final.callPackage ./packages { };
         in
-        surgeVersions.byAttribute
-        // {
-          # `surge` is deliberately the newest pinned release, rather than an
-          # updater URL.  Older releases remain addressable through both the
-          # flat `surge_6_X_Y` names and `surge6."X.Y.Z"`.
-          surge = surgeVersions.latest;
-          surge6 = surgeVersions.byVersion // {
+        {
+          # Follow the version-family API used by modern toolchain overlays:
+          # selection stays under one domain name, while `latest` is an
+          # explicit moving alias to the newest *pinned* archive.
+          surge = {
+            inherit (surgeVersions) versions;
             latest = surgeVersions.latest;
           };
         };
