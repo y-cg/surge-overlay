@@ -113,4 +113,16 @@
     archiveId = "2e39a9dd675107098a3c4e779953f46a";
     hash = "sha256-1qDn+6n4QpTmEXbYyjlipRGC2SYDuku6JYkOHKPVpT0=";
   }
+  {
+    version = "6.9.1";
+    build = "12290";
+    archiveId = "fb384eba25d82267269116bf821f4643";
+    hash = "sha256-C5kBTVE3uBTs7JRHmvQvTx/h+VgVHPVKkhX+c4KWJ90=";
+  }
+  {
+    version = "6.10.0";
+    build = "12500";
+    archiveId = "79b87792e2bd345e064c2d473790b404";
+    hash = "sha256-pTuoP6fDUikUX8Bk8yTe/txq4WHNEXPVfmNFI6QQSJA=";
+  }
 ]

@@ -23,8 +23,7 @@ valid Surge license to use; the package is therefore marked unfree.
 }
 ```
 
-`pkgs.surge.latest` and `nix run .` select the newest pinned release,
-currently 6.9.0.  Select a specific archived release by its literal upstream
+`pkgs.surge.latest` and `nix run .` select the newest pinned release.  Select a specific archived release by its literal upstream
 version, for example `pkgs.surge.versions."6.4.4"`.  The flake's direct
 package outputs retain normalized names such as `surge_6_4_4` for command-line
 convenience; they are not exported by the overlay.
@@ -50,6 +49,16 @@ item, record the marketing version, Sparkle build number, archive identifier,
 and a freshly calculated SRI SHA-256 in `packages/versions.nix`.  Do not use
 the moving `Surge-latest.zip` URL: it would make historical package names
 non-reproducible.
+
+To do this automatically, run the nushell updater from the repository root:
+
+```console
+$ nu scripts/update-versions.nu --dry-run   # report new releases only
+$ nu scripts/update-versions.nu             # append them to versions.nix
+```
+
+The script only appends releases missing from `versions.nix`, and it refuses
+to continue if a pinned build or archive ID disagrees with the appcast.
 
 The bundle paths deliberately follow the packaging knowledge captured in
 Homebrew's `surge` cask.

@@ -84,5 +84,7 @@ let
 in
 {
   inherit byAttribute releases versions;
-  latest = versions."6.9.0";
+  # versions.nix is kept in ascending build order (see scripts/update-versions.nu),
+  # so the last entry is the newest pinned release.
+  latest = versions.${(lib.last releases).version};
 }
