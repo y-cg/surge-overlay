@@ -125,4 +125,10 @@
     archiveId = "79b87792e2bd345e064c2d473790b404";
     hash = "sha256-pTuoP6fDUikUX8Bk8yTe/txq4WHNEXPVfmNFI6QQSJA=";
   }
+  {
+    version = "6.11.0";
+    build = "12800";
+    archiveId = "409443249acdd5276ff2795a76e06044";
+    hash = "sha256-5uHE8oBose7qmiJzd+kmvpYsPftdEbqPLomp1bMGKck=";
+  }
 ]
